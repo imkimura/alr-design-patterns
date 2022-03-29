@@ -10,4 +10,4 @@ $calculadora = new CalculadoraDeImpostos();
 $orcamento = new Orcamento();
 $orcamento->valor = 100;
 
-echo $calculadora->calcula($orcamento, 'ICMS');
+echo $calculadora->calcula($orcamento, new \Kimura\DesignPattern\Icms());
