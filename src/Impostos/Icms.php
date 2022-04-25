@@ -1,6 +1,8 @@
 <?php
 
-namespace Kimura\DesignPattern;
+namespace Kimura\DesignPattern\Impostos;
+
+use Kimura\DesignPattern\Orcamento;
 
 class Icms implements Imposto
 {
