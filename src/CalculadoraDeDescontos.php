@@ -2,14 +2,20 @@
 
 namespace Kimura\DesignPattern;
 
+use Kimura\DesignPattern\Descontos\DescontoMaisDe500Reais;
+use Kimura\DesignPattern\Descontos\DescontoMaisDe5Itens;
+use Kimura\DesignPattern\Descontos\SemDesconto;
+
 class CalculadoraDeDescontos
 {
-    public function calculaDescontos(Orcamento $orcamento): float
+    public function calculaDesconto(Orcamento $orcamento): float
     {
-        if ($orcamento->quantidade > 5) {
-            return $orcamento->valor * 0.1;
-        }
+        $cadeiaDeDescontos = new DescontoMaisDe5Itens(
+            new DescontoMaisDe500Reais(
+                new SemDesconto()
+            )
+        );
 
-        return 0;
+        return $cadeiaDeDescontos->calculaDescontos($orcamento);
     }
 }
