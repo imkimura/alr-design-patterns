@@ -4,7 +4,7 @@ namespace Kimura\DesignPattern\Actions;
 
 use Kimura\DesignPattern\Pedido;
 
-class GeraLog
+class GeraLog implements Action
 {
     public function executaAcao(Pedido $pedido): void
     {

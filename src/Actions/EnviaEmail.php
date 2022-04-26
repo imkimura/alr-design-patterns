@@ -4,7 +4,7 @@ namespace Kimura\DesignPattern\Actions;
 
 use Kimura\DesignPattern\Pedido;
 
-class EnviaEmail
+class EnviaEmail implements Action
 {
     public function executaAcao(Pedido $pedido): void
     {

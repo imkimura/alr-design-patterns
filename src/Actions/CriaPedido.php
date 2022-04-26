@@ -4,7 +4,7 @@ namespace Kimura\DesignPattern\Actions;
 
 use Kimura\DesignPattern\Pedido;
 
-class CriaPedido
+class CriaPedido implements Action
 {
     public function executaAcao(Pedido $pedido): void
     {
