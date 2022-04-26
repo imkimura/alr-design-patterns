@@ -3,6 +3,9 @@
 namespace Kimura\DesignPattern\Command;
 
 use Kimura\DesignPattern\{Orcamento, Pedido};
+use Kimura\DesignPattern\Actions\CriaPedido;
+use Kimura\DesignPattern\Actions\EnviaEmail;
+use Kimura\DesignPattern\Actions\GeraLog;
 
 class GerarPedidoHandler
 {
@@ -22,10 +25,14 @@ class GerarPedidoHandler
         $pedido->orcamento = $orcamento;
 
         // PedidosRepository
-        echo "Cria pedido no banco de dados " . PHP_EOL;
+        $pedidosRepository = new CriaPedido();
         // MailService
-        echo "Envia e-mail para cliente " . PHP_EOL;
+        $geraLog = new GeraLog();
         // Log
-        echo "Gerar log de criação de pedido" . PHP_EOL;
+        $enviaEmail = new EnviaEmail();
+
+        $pedidosRepository->executaAcao($pedido);
+        $geraLog->executaAcao($pedido);
+        $enviaEmail->executaAcao($pedido);
     }
 }
