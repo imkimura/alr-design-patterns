@@ -2,9 +2,7 @@
 
 namespace Kimura\DesignPattern\Command;
 
-use Kimura\DesignPattern\{Orcamento, Pedido};
-
-class GerarPedido implements Command
+class GerarPedido
 {
     private float $valorOrcamento;
     private int $numeroItens;
@@ -20,18 +18,27 @@ class GerarPedido implements Command
         $this->nomeCliente = $nomeCliente;
     }
 
-    public function execute()
+    /**
+     * @return float
+     */
+    public function getValorOrcamento(): float
     {
-        $orcamento = new Orcamento();
-        $orcamento->quantidade = $this->numeroItens;
-        $orcamento->valor = $this->valorOrcamento;
+        return $this->valorOrcamento;
+    }
 
-        $pedido = new Pedido();
-        $pedido->dataFinalizacao = new \DateTimeImmutable();
-        $pedido->nomeCliente = $this->nomeCliente;
-        $pedido->orcamento = $orcamento;
+    /**
+     * @return int
+     */
+    public function getNumeroItens(): int
+    {
+        return $this->numeroItens;
+    }
 
-        echo 'Cria' . PHP_EOL;
-        echo "{$pedido->nomeCliente}";
+    /**
+     * @return string
+     */
+    public function getNomeCliente(): string
+    {
+        return $this->nomeCliente;
     }
 }
